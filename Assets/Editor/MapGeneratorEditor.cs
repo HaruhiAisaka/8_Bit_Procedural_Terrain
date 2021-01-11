@@ -10,12 +10,6 @@ public class MapGeneratorEditor : Editor
     {
         MapGenerator mapGen = (MapGenerator) target;
 
-        if (DrawDefaultInspector())
-        {
-            if (mapGen.autoUpdate)
-                mapGen.GenerateMap();
-        }
-
         if (GUILayout.Button("Generate Noise"))
         {
             mapGen.GenerateMap();

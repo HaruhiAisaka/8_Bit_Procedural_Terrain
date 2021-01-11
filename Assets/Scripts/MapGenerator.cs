@@ -29,7 +29,6 @@ public class MapGenerator : MonoBehaviour
     public Vector2 offset;
 
     public TerrainTile[] terrainTiles;
-    public bool autoUpdate = false;
 
     [System.Serializable]
     public struct TerrainTile
