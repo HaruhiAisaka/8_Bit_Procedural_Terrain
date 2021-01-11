@@ -121,36 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &426847733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 426847734}
-  m_Layer: 0
-  m_Name: TileMap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &426847734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426847733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &433722089
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,17 +151,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e9d68ce4b7d2945ac77dc66444659c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawMode: 1
+  drawMode: 0
+  falloff: 0
   display: {fileID: 433722092}
-  mapWidth: 16
-  mapHeight: 16
-  noiseScale: 8
-  seed: 80
+  mapWidth: 150
+  mapHeight: 100
+  noiseScale: 25
+  seed: 0
   octaves: 4
   persistance: 0.3
   lacunarity: 2
   offset: {x: 0, y: 0}
-  autoUpdate: 0
+  terrainTiles: []
+  autoUpdate: 1
 --- !u!4 &433722091
 Transform:
   m_ObjectHideFlags: 0
@@ -219,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureRenderer: {fileID: 1336255604}
-  tileMap: {fileID: 426847733}
+  tileMap: {fileID: 5598701188021070630, guid: 1db61e9bbb8a3b348aac822adc1844ca, type: 3}
   tile: {fileID: 6175526167271116277, guid: b36a4ddf1196d2848acf00480b9d2ab0, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -322,7 +294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1336255603
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -355,7 +327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c1ab860bba1cf749a6032ef3cb3a1da, type: 2}
+  - {fileID: 2100000, guid: a171def91db148f4ebd992b9e38efb17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 1336255602}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 1, z: 16}
+  m_LocalScale: {x: 150, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public enum DrawMode {noiseTexture, noiseTiles, TerrainTiles}
+    public enum DrawMode {NoiseTexture, TerrainTiles}
 
     public DrawMode drawMode;
+    public bool falloff;
 
     public MapDisplay display;
     public int mapWidth;
@@ -29,57 +30,6 @@ public class MapGenerator : MonoBehaviour
 
     public TerrainTile[] terrainTiles;
     public bool autoUpdate = false;
-    public void GenerateMap() 
-    {
-        float[,] noiseMap = 
-            Noise.GenerateNoise(
-                mapWidth, 
-                mapHeight, 
-                seed, 
-                noiseScale,
-                octaves,
-                persistance,
-                lacunarity,
-                offset);
-
-        if (drawMode == DrawMode.TerrainTiles)
-        {
-            Sprite[,] spriteMap = SpriteMapFromNoiseMap(noiseMap);
-            display.DrawTileMap(spriteMap);
-        }
-            
-        else 
-            display.DrawNoiseMap(noiseMap, drawMode);
-    }
-
-    private Sprite[,] SpriteMapFromNoiseMap(float[,] noiseMap)
-    {   
-        Sprite[,] spriteMap = new Sprite[mapWidth, mapHeight];
-
-        for (int y = 0; y < mapHeight; y++)
-        {
-            for (int x = 0; x < mapWidth; x++)
-            {
-                foreach (TerrainTile terrainTile in terrainTiles)
-                {
-                    if (noiseMap [x, y] >= terrainTile.minHeight)
-                        spriteMap[x, y] = terrainTile.sprite;
-                }
-            }
-        }
-
-        return spriteMap;
-    }
-
-    private void OnValidate() 
-    {
-        if (octaves < 0)
-            octaves = 0;
-        if (lacunarity < 0)
-            lacunarity = 0;
-        if (noiseScale < 0)
-            noiseScale = 0;
-    }
 
     [System.Serializable]
     public struct TerrainTile
