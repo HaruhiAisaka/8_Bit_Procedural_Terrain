@@ -4,50 +4,27 @@ using UnityEngine;
 
 public class PlayerMovementBehavior : MonoBehaviour
 {
-    [Header("Component References")]
-    public Rigidbody2D playerRigidbody;
+    private Rigidbody2D playerRigidbody;
+    private Vector2 movementDirection;
 
-    [Header("Movement Settings")]
-    public float movementSpeed = 3f;
-    public float turnSpeed = 0.1f;
-
-    private Camera mainCamera;
-    private Vector3 movementDirection = Vector3.zero;
-
-    public void SetupBehavior()
+    void Awake()
     {
-        SetGameplayCamera();
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void SetGameplayCamera()
+    void FixedUpdate()
     {
-        mainCamera = CameraManager.Instance.GetGameplayCamera();
+        Debug.Log("movementDirection: " + movementDirection);
+        MovePlayer();
     }
 
-    public void UpdateMovementData(Vector2 newMovementDirection)
+    public void UpdateMovementDirection(Vector2 vector)
     {
-        movementDirection = newMovementDirection;
+        movementDirection = vector;
     }
 
-    void FixedUpdate() 
+    private void MovePlayer()
     {
-        MovePlayer();    
-    }
-
-    void MovePlayer()
-    {
-        Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
-        playerRigidbody.MovePosition(transform.position + movement);
-    }
-
-    Vector3 CameraDirection(Vector3 movementDirection)
-    {
-        var cameraForward = mainCamera.transform.forward;
-        var cameraRight = mainCamera.transform.right;
-
-        cameraForward.y = 0f;
-        cameraRight.y = 0f;
-
-        return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
+        playerRigidbody.velocity = movementDirection;
     }
 }

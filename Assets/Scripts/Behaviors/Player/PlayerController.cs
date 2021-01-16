@@ -4,42 +4,33 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
-{
-    [Header("Sub Behaviours")]
+{   
+    [Header("Components")]
     public PlayerMovementBehavior playerMovementBehavior;
 
-    [Header("Input Settings")]
-    public PlayerInput playerInput;
-    private Vector3 rawInputMovement;
-    
-    // Action Maps
-    private string actionMapPlayerControls = "Player Controls";
-    private string actionMapMenuControls = "Menu Controls";
+    PlayerControls controls;
+    Vector2 move;
 
-    // Current Control Scheme
-    private string currentControlScheme;
-
-    public void SetupPlayer()
+    void Awake()
     {
-        currentControlScheme = playerInput.currentControlScheme;
-
-        playerMovementBehavior.SetupBehavior();
+        controls = new PlayerControls();
+        controls.Player.Movement.performed += ctx => 
+            SendMessage(ctx.ReadValue<Vector2>());
     }
 
-    public void OnMovement(InputAction.CallbackContext value)
+    void SendMessage(Vector2 value)
     {
-        Vector2 inputMovement = value.ReadValue<Vector2>();
-        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+        playerMovementBehavior.UpdateMovementDirection(value);
     }
 
-    void Update()
+    private void OnEnable()
     {
-        UpdatePlayerMovement();
+        controls.Player.Enable();
     }
 
-    void UpdatePlayerMovement()
+    private void OnDisable()
     {
-        playerMovementBehavior.UpdateMovementData(rawInputMovement);
+        controls.Player.Disable();
     }
 
 }
