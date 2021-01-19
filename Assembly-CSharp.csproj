@@ -37,14 +37,19 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Behaviors\Controls\PlayerControls.cs" />
-     <Compile Include="Assets\Scripts\Behaviors\MapGeneration\FalloffGenerator.cs" />
-     <Compile Include="Assets\Scripts\Behaviors\MapGeneration\MapDisplay.cs" />
-     <Compile Include="Assets\Scripts\Behaviors\MapGeneration\MapGenerator.cs" />
-     <Compile Include="Assets\Scripts\Behaviors\MapGeneration\Noise.cs" />
-     <Compile Include="Assets\Scripts\Behaviors\MapGeneration\Tile.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapData\NoiseData.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapData\TerrainData.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapDisplay.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapGeneration\EndlessTerrain.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapGeneration\FalloffGenerator.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapGeneration\MapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\MapGeneration\Noise.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\TileDisplay.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\Map\TileInstantiator.cs" />
      <Compile Include="Assets\Scripts\Behaviors\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Behaviors\Player\PlayerMovementBehavior.cs" />
      <Compile Include="Assets\Scripts\Behaviors\UI\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Lerp.cs" />
      <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Users/bobin/Desktop/Unity_Projects/2019.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

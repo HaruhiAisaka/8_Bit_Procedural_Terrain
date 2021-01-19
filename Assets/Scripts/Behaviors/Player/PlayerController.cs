@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
         controls = new PlayerControls();
         controls.Player.Movement.performed += ctx => 
             SendMessage(ctx.ReadValue<Vector2>());
+        controls.Player.Movement.canceled += ctx => SendMessage(Vector2.zero);
     }
 
     void SendMessage(Vector2 value)
     {
+        Debug.Log(value);
         playerMovementBehavior.UpdateMovementDirection(value);
     }
 

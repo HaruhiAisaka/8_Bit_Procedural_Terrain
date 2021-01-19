@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77b4035c610a41419fe857e3e246568, type: 3}
+  m_Name: DefaultTerrainData
+  m_EditorClassIdentifier: 
+  tiles:
+  - sprite: {fileID: 21300000, guid: 11f11cdaca335de43ab2a1c12707f95c, type: 3}
+    minHeight: 0
+    accessable: 0
+  - sprite: {fileID: 21300000, guid: b7f0f3850424f25499837321a20158e2, type: 3}
+    minHeight: 0.216
+    accessable: 1
+  - sprite: {fileID: 21300000, guid: 234eee0403d32f14b92f6e65e3159b0c, type: 3}
+    minHeight: 0.514
+    accessable: 1
+  - sprite: {fileID: 21300000, guid: 3308eb104b07de644b52171040e92dda, type: 3}
+    minHeight: 0.657
+    accessable: 1
+  - sprite: {fileID: 21300000, guid: 2b9bd59444d9d41468da019759ff5e8d, type: 3}
+    minHeight: 0.862
+    accessable: 0

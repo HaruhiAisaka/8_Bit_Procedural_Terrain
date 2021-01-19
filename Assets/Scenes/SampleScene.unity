@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea37d5544a235d41ac8adf98ebbf3eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapCenter: {x: 25, y: 25}
   textureRenderer: {fileID: 862473326}
-  tileMap: {fileID: 5598701188021070630, guid: 1db61e9bbb8a3b348aac822adc1844ca, type: 3}
-  tile: {fileID: 6175526167271116277, guid: b36a4ddf1196d2848acf00480b9d2ab0, type: 3}
+  tileInstantiator: {fileID: 1876471046}
 --- !u!4 &433722091
 Transform:
   m_ObjectHideFlags: 0
@@ -182,28 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drawMode: 1
   display: {fileID: 433722090}
-  mapWidth: 256
-  mapHeight: 256
-  noiseScale: 30
-  seed: 1
-  octaves: 2
-  persistance: 0.5
-  lacunarity: 2
-  offset: {x: 0, y: 0}
-  falloff: 1
-  terrainTiles:
-  - sprite: {fileID: 21300000, guid: 11f11cdaca335de43ab2a1c12707f95c, type: 3}
-    minHeight: 0
-  - sprite: {fileID: 21300000, guid: d5de7dd3dd54b124ba33ac9ca7e7296b, type: 3}
-    minHeight: 0.3
-  - sprite: {fileID: 21300000, guid: b7f0f3850424f25499837321a20158e2, type: 3}
-    minHeight: 0.2
-  - sprite: {fileID: 21300000, guid: 234eee0403d32f14b92f6e65e3159b0c, type: 3}
-    minHeight: 0.5
-  - sprite: {fileID: 21300000, guid: 3308eb104b07de644b52171040e92dda, type: 3}
-    minHeight: 0.6
-  - sprite: {fileID: 21300000, guid: 2b9bd59444d9d41468da019759ff5e8d, type: 3}
-    minHeight: 0.8
+  noiseData: {fileID: 11400000, guid: 717d88241da0995448cf4126ba96efed, type: 2}
+  terrainData: {fileID: 11400000, guid: 15675663203d276468345bcbdd29b5d8, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +281,7 @@ GameObject:
   - component: {fileID: 542529290}
   - component: {fileID: 542529291}
   - component: {fileID: 542529292}
+  - component: {fileID: 542529293}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -429,6 +410,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d383cf9ed6ffb4f88fa0806248f863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  durationOfMovementPerTile: 0.28
+--- !u!95 &542529293
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542529287}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 419512a88a9f5dc4c8742669b1596dc4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &542529294
 Rigidbody2D:
   serializedVersion: 4
@@ -524,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 862473325}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 256, y: 1, z: 256}
+  m_LocalScale: {x: 50, y: 1, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -604,3 +605,84 @@ Transform:
   m_Father: {fileID: 1656541844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1876471045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339599373152153244, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598701188021070630, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+        type: 3}
+      propertyPath: m_Name
+      value: TileInstantiator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1db61e9bbb8a3b348aac822adc1844ca, type: 3}
+--- !u!114 &1876471046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1724345866414987318, guid: 1db61e9bbb8a3b348aac822adc1844ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1876471045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef6778b1d2c5e14dad3ae6eab8f0f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
