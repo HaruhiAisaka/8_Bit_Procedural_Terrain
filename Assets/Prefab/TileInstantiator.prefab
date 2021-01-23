@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2339599373152153244}
-  - component: {fileID: 1724345866414987318}
+  - component: {fileID: 6672761400975237417}
   m_Layer: 0
   m_Name: TileInstantiator
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1724345866414987318
+--- !u!114 &6672761400975237417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,8 +40,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5598701188021070630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef6778b1d2c5e14dad3ae6eab8f0f42, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ab184e30eb97c249ba052ead8cae401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileDisplay: {fileID: 6116355551139525328, guid: b36a4ddf1196d2848acf00480b9d2ab0,
+  tileDisplay: {fileID: 4544340066838876098, guid: b36a4ddf1196d2848acf00480b9d2ab0,
     type: 3}

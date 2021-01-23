@@ -6,12 +6,40 @@ public class MapGenerator : MonoBehaviour
 {
     public enum DrawMode {NoiseOnPlane, TileMap}
     public DrawMode drawMode;
-    public MapDisplay display;
 
+    [Header("Components")]
+    public MapDisplay display;
+    public TileInstantiator tileInstantiator;
+    public NoiseDataUI noiseDataUI;
+
+    [Header("MapData")]
     public NoiseData noiseData;
     public TerrainData terrainData;
 
-    public void GenerateMap() 
+    void Start()
+    {
+        noiseData = new NoiseData(40, 30, 0, 2, .5f, 2, true);
+        noiseDataUI.UpdateUI(noiseData);
+        GenerateAndDisplayMap();
+    }
+
+    public void GenerateAndDisplayMap()
+    {
+        float[,] noiseMap = GenerateNoiseMap();
+
+        if (drawMode == DrawMode.NoiseOnPlane)
+        {
+            display.DisplayNoiseOnPlane(noiseMap);
+        }
+        else if (drawMode == DrawMode.TileMap)
+        {
+            Tile[,] tileMap = GenerateTileMap(noiseMap);
+            display.SetMapCenter(tileMap);
+            display.DisplayTileMap(tileMap);
+        }
+    }
+
+    private float[,] GenerateNoiseMap() 
     {
         float[,] noiseMap = 
             Noise.GenerateNoise(
@@ -40,15 +68,7 @@ public class MapGenerator : MonoBehaviour
 
         // noiseMap = falloffMap;
 
-        if (drawMode == DrawMode.NoiseOnPlane)
-        {
-            display.DisplayNoiseOnPlane(noiseMap);
-        }
-        else if (drawMode == DrawMode.TileMap)
-        {
-            Tile[,] tileMap = GenerateTileMap(noiseMap);
-            display.DisplayTileMap(tileMap);
-        }
+        return noiseMap;
     }
 
     private Tile[,] GenerateTileMap(float[,] noiseMap)
@@ -63,4 +83,55 @@ public class MapGenerator : MonoBehaviour
         }
         return tileMap;
     }
+}
+
+public class NoiseData
+{ 
+    public int mapWidth;
+
+    public int mapHeight;
+
+    public float noiseScale = 30f;
+
+    public int seed;
+
+    [Range (0,10)]
+    public int octaves;
+
+    [Range(0,1)]
+    public float persistance;
+
+    public float lacunarity;
+
+    public Vector2 offset = new Vector2(0,0);
+    public bool falloff;
+
+    public NoiseData (
+        int mapWidth,
+        int mapHeight,
+        int seed,
+        int octaves,
+        float persistance,
+        float lacunarity,
+        bool falloff
+    )
+    {
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+        this.seed = seed;
+        this.octaves = octaves;
+        this.persistance = persistance;
+        this.lacunarity = lacunarity;
+        this.falloff = falloff;
+    }
+
+	void OnValidate() {
+		if (lacunarity < 1) {
+			lacunarity = 1;
+		}
+		if (octaves < 0) {
+			octaves = 0;
+		}
+	}
+
 }

@@ -16,13 +16,13 @@ public static class Noise
     {
         float[,] noiseMap = new float[mapWidth, mapHeight];
 
-        System.Random rng = new System.Random(seed);
+        RNG.ResetSeed(seed);
         Vector2[] octaveOffsets = new Vector2[octaves];
 
         for (int i = 0; i < octaves; i++)
         {
-            float offsetX = rng.Next(-100_000, 100_000) + offset.x;
-            float offsetY = rng.Next(-100_000, 100_000) + offset.y;
+            float offsetX = RNG.Next(-100_000, 100_000) + offset.x;
+            float offsetY = RNG.Next(-100_000, 100_000) + offset.y;
             octaveOffsets[i] = new Vector2(offsetX, offsetY);
         }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class FalloffGenerator
 {
+    public static float a = 2f;
+    public static float b = 3.2f;
     public static float[,] GenerateFalloffMap(int width, int height)
     {
         float[,] map = new float[width, height];
@@ -15,7 +17,7 @@ public static class FalloffGenerator
                 float y = j / (float)height * 2 - 1;
 
                 float value = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
-                value = Smoothout(value, 3f, 1.5f);
+                value = Smoothout(value, a, b);
                 map[i, j] = value;
             }
         }
